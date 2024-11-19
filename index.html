@@ -35,7 +35,11 @@
       <nav class="nav">
         <a class="nav__skip" href="#main">Skip to main content</a>
         <div class="nav__inner">
-          <button class="nav__menu-button nav__menu-button--open">
+          <button 
+            class="nav__menu-button nav__menu-button--open"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
             <img
               src="./assets/icons/menu.svg"
               alt="Open menu"
@@ -43,9 +47,14 @@
               height="32"
             />
         </button>
-        <div class="nav__mobile-nav hidden">
+        <div id="mobile-menu" class="nav__mobile-nav hidden" role="dialog" aria-labelledby="mobile-menu-title">
+          <h2 id="mobile-menu-title" class="visually-hidden">Mobile Navigation</h2>
           <div class="nav__mobile-nav-inner">
-            <button class="nav__menu-button nav__menu-button--close">
+            <button 
+              class="nav__menu-button nav__menu-button--close"
+              aria-controls="mobile-menu"
+              aria-expanded="true"
+            >
               <img
                 src="./assets/icons/close.svg"
                 alt="Close menu"
@@ -64,19 +73,19 @@
                 <a
                   href="https://www.instagram.com/queersquad_de/"
                   target="_blank"
-                  >What's on</a
-                  >
+                  rel="noopener noreferrer"
+                >
+                  What's on
+                  </a>
                 </li>
                 <li class="nav__link">
-                  <a href="./pages/past-events/past-events-en.html"
-                    >Past events</a
-                  >
+                  <a href="./pages/past-events/past-events-en.html">Past events</a>
                 </li>
                 <li class="nav__link">
                   <a href="./pages/join-us/join-us-en.html">Join us</a>
                 </li>
                 <li class="nav__link">
-                  <a href="/pages/contact/contact-en.html">Contact</a>
+                  <a href="./pages/contact/contact-en.html">Contact</a>
                 </li>
                 <!-- <li class="nav__link"><a href="">Blog</a></li> -->
                 <!-- <li class="nav__link"><a href="">Legal Notice</a></li> -->
@@ -86,24 +95,109 @@
               </ul>
             </div>
           </div>
+
           <a href="./index.html" class="nav__logo">Queer Squad</a>
           <div class="nav__language-switcher">
-            <button class="nav__language-button">
-              <span class="sr-only">Change from </span>English<span
-                class="sr-only"
-              >
-                to another language</span
-              >
+            <!-- Langurage Toggle Button -->
+            <button 
+              class="nav__language-button" 
+              aria-expanded="false"
+              aria-controls="language-menu"
+              aria-label="Toggle language menu"
+            >
+              <span class="sr-only">Change from </span>English
+              <span class="sr-only">to another language </span>
             </button>
-            <ul class="nav__language-list hidden">
-              <li class="nav__other-language nav__other-language--roman">
-                <a href="./pages/home/home-de.html">Deutsch</a>
+
+            <!-- Language Menu -->
+            <ul 
+              id="language-menu"
+              class="nav__language-list hidden"
+              role="menu"
+              aria-label="Language options"
+            >
+              <li class="nav__other-language nav__other-language--roman" role="menuitem">
+                <a href="./pages/home/home-de.html" lang="de">Deutsch</a>
               </li>
-              <!-- <li class="nav__other-language nav__other-language--chinese">
-                <a href=".">简体中文</a>
-              </li> -->
+              <li class="nav__other-language nav__other-language--chinese" role="menuitem">
+                <a href="./pages/home/home-cn.html" lang="zh">简体中文</a>
+              </li>
             </ul>
           </div>
-        </div>
+        
+        <nav aria-label="Primary navigation">
+          <div class="nav__desktop-nav hidden-on-mobile">
+            <ul class="nav__link-list">
+              <li class="nav__link">
+                <a href="./pages/about/about-en.html">About us</a>
+              </li>
+              <li class="nav__link">
+                <a 
+                  href="https://www.instagram.com/queersquad_de/" 
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="What's on (opens in a new tab)"
+                >
+                  What's on
+                </a>
+              </li>
+              <li class="nav__link">
+                <a href="./pages/past-events/past-events-en.html">Past events</a>
+              </li>
+              <li class="nav__link">
+                <a href="./pages/join-us/join-us-en.html">Join us</a>
+              </li>
+              <li class="nav__link">
+                <a href="./pages/contact/contact-en.html">Contact</a>
+              </li>
+              <!-- <li class="nav__link"><a href="" target="_blank">Blog</a></li> -->
+              <!-- <li class="nav__link"><a href="">Legal Notice</a></li> -->
+              <!-- <li class="nav__link nav__link--donate"><a href="">Donate</a></li> -->
+            </ul>
+          </div>
+        </nav>
+      </header>
 
+      <main class="home" id="main" role="main">
+        <div class="main-wrapper">
+          <img
+            src="./assets/logo.png"
+            alt="Queer Squad logo"
+            class="home__logo"
+            fetchPriority="high"
+            width="1018"
+            height="1014"
+          />
+          <div class="home__info">
+            <h1 class="home__headings">
+              <span class="home__heading home__heading--english" lang="en">
+              Queer Squad</span>
+              <span class="home__heading home__heading--chinese" lang="zh">酷儿小分队</span>
+            </h1>
+            <p class="home__tagline">Chinese diasporic queer feminist community in Germany</p>
+            <div class="home__desc">
+              <p>Embrace queerness!</p>
+            </div>
+            <div class="home__ctas">
+              <a
+                href="./pages/about/about-en.html"
+                class="home__cta home__cta--secondary"
+                aria-label="Learn more about Queer Squad"
+              >
+                Get to know us
+              </a>
+              <a
+                href="./pages/join-us/join-us-en.html"
+                class="home__cta home__cta--primary"
+                rel="noopener"
+                aria-label="Join Queer Squad community"
+              >
+                Join us
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      
   </html>
