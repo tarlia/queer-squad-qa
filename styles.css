@@ -315,6 +315,7 @@ template {
     --text-color-dark: #ffffff; /* dark mode */
     --bg-color-light:#ffffff;
     --bg-color-dropdown-light: #FFF9F3;
+    --bg-color-event: #dfdfdf3b;
     --bg-color-dark: #000000; /* dark mode */
     --bg-color-dark-overlay: #000000CC; /* dark mode */
     --primary-color: #fb7922; 
@@ -854,9 +855,7 @@ header {
     background-image: url("../../assets/figures/ace.png");
 }
 
-/* 11.25 to resume */ 
-
-/* for home page */
+/* Main container for the homepage. */
 .home {
     margin-top: 1rem;
     flex-grow: 1;
@@ -868,6 +867,7 @@ header {
       margin-bottom: 0;
     }
 }
+/* Homepage Logo Styles. */
 .home__logo {
     grid-column: 2/4;
     width: 100%;
@@ -883,6 +883,7 @@ header {
       grid-column: 2/span 3;
     }
 } 
+/* Homepage Info content Styles. */
 .home__info {
     grid-column: 1/6;
     margin-top: 0.5rem;
@@ -898,11 +899,13 @@ header {
       margin-top: 0;
     }
 }
+/* Container for Main Headings. */
 .home__headings {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+/* Decorative Style for main Heading Text. */
 .home__heading {
     text-align: center;
     background-image: url("../../assets/rainbow.jpg");
@@ -913,15 +916,18 @@ header {
     -webkit-text-fill-color: transparent;
     font-size: 2.5rem;
 }
+/* Styles for English Headings. */
 .home__heading--english {
     font-family: var(--font-family-primary);
     padding-right: 0.5rem;
     line-height: 4rem;
 }
+/* Styles for Chinese Headings. */
 .home__heading--chinese {
     font-family: var(--font-family-cn);
     margin-top: 0.25rem;
 }
+/* Styles for the description section. */
 .home__desc {
     margin-top: 1.5rem;
     text-align: center;
@@ -930,6 +936,7 @@ header {
     margin: 0.5rem 0;
     font-size: 1.25rem;
 }
+/* Styles for CTA button Section. */
 .home__ctas {
     display: flex;
     flex-direction: column;
@@ -944,6 +951,7 @@ header {
       gap: 2rem;
     }
 }
+/* Styles for primary CTA button. */
 .home__cta--primary {
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
@@ -951,22 +959,25 @@ header {
     font-size: 1.25rem;
     font-weight: 700;
     background-color: var(--primary-color);
-    color: #ffffff;
+    color: var(--text-color-dark);
 }
+/* Accessibility: Adds focus visibility for keyboard users. */
 .home__cta--primary:focus-visible {
     outline-offset: 5px;
 }
+/* Interactivity: Changes appearance on hover for user feedback. */
 .home__cta--primary:hover {
     background-color: var(--hover-color);
     border-color: var(--hover-color);
 }
+/* Styles for secondary CTA button. */
 .home__cta--secondary {
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
     border: 1px solid var(--primary-color);
     font-size: 1.25rem;
     font-weight: 700;
-    background-color: #ffffff;
+    background-color: var(--bg-color-light);
     color: var(--primary-color);
 }
 .home__cta--secondary:focus-visible {
@@ -974,51 +985,68 @@ header {
 }
 .home__cta--secondary:hover {
     background-color: var(--primary-color);
+    color: #ffffff;
 }
 
-/* for past event page */
+/* Past Event Section Layout */
 .past-events__section {
     margin: 3rem 0 10rem;
+    padding: 1rem;
 }
+/* Category Styling */
 .past-events__category {
     position: relative;
+    padding-left: 2.5rem;
+    /* font-size: var(--font-size-medium); */
+    font-weight: bold;
+    color: var(--primary-color);
 }
 .past-events__category::before {
     content: "";
     display: inline-block;
     position: relative;
-    width: 2rem;
-    height: 2rem;
+    width: 2rem; /* var(--icon-size-large) */
+    height: 2rem; /* var(--icon-size-large) */
+    left: 0;
+    top: 0.2rem;
     background-size: contain;
     background-repeat: no-repeat;
 }
 .past-events__category--film::before {
     background-image: url("../../assets/icons/film.svg");
-    top: 0.5rem;
 }
 .past-events__category--reading::before {
     background-image: url("../../assets/icons/book.svg");
-    top: 0.4rem;
 }  
 .past-events__category--workshop::before {
     background-image: url("../../assets/icons/group.svg");
-    top: 0.3rem;
 }
+/* Event Card */
 .past-events__event {
     margin: 1.5rem 0 3rem;
-    background-color: rgba(223, 223, 223, 0.23);
+    background-color: var(--bg-color-event);
     padding: 1rem;
     border-radius: 0.3rem;
+    /* box-shadow: var(--shadow-elevation-low); */
+    transition: transform 0.2s ease;
 }
+/*
+.past-events__event:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevation-medium);
+}*/
+
 @media screen and (min-width: 1024px) {
     .past-events__event {
       padding: 2rem;
     }
 }
+/* Metadata (Location, Time, etc.) */
 .past-events__meta {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    /* font-size: ; */
     font-weight: bold;
     margin-top: 1rem;
 }
@@ -1027,16 +1055,20 @@ header {
       flex-direction: row;
       align-items: center;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 }
 .past-events__meta p {
     margin: 0;
+    white-space: nowrap; /* Prevents text wrapping */
 }
-.past-events__location, .past-events__time {
+.past-events__location, 
+.past-events__time {
     position: relative;
     padding-left: 2rem;
 }
-.past-events__location::before, .past-events__time::before {
+.past-events__location::before, 
+.past-events__time::before {
     content: "";
     display: block;
     position: absolute;
@@ -1047,6 +1079,7 @@ header {
     background-position: center;
     left: 0;
     bottom: 0;
+    transform: translateY(-50%);
 }
 .past-events__location::before {
     background-image: url("../../assets/icons/location.svg");
@@ -1054,16 +1087,26 @@ header {
 .past-events__time::before {
     background-image: url("../../assets/icons/time.svg");
 }
+/* Event Details */
 .past-events__details {
     margin-top: 2rem;
 }
 .past-events__details ul {
     list-style: disc;
     margin-left: 1.5rem;
+    /* color: var(--text-color-secondary) */
 }
 .past-events__details li {
     margin: 1rem 0;
 }
+/* Responsiveness for Details List */
+@media screen and (max-width: 600px) {
+    .past-events__details ul {
+        margin-left: 1rem;
+    }
+}
+
+/*11.26 to resume */
 
 /* for contact */
 .contact__socials {
